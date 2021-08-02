@@ -1,38 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
-import Greeting from './src/components/Greeting'
-import Counter from './src/components/Counter'
+import React from 'react';
+import { StyleSheet, } from 'react-native';
+import MainScreen from './src/components/screens/MainScreen';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import SubScreen from './src/components/screens/SubScreen';
 
-export default function App() {
+const App = () => {
 
-  const [text, setText] = useState('')
-  const [message, setMessage] = useState('')
-
-  const onClick = () => {
-    const str = `こんにちは！${text}さん`
-    setMessage(str)
-  }
+  const Stack = createStackNavigator();
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        onChangeText={setText}
-        value={text}
-      />
-      <Button onPress={onClick} title='click!' />
-      <Text>{message}</Text>
-      <Image
-        style={styles.tinyLogo}
-        source={{
-          uri: "https://picsum.photos/id/1035/367/267"
-        }} />
-      <Text>Open up App.js to start working on your app!!!!!yoyan</Text>
-      <Greeting text="Hello world" />
-      <StatusBar style="auto" />
-      <Counter />
-    </View>
+    <NavigationContainer >
+      <Stack.Navigator >
+        <Stack.Screen name="My first Page" component={MainScreen} />
+        <Stack.Screen name="SubScreen" component={SubScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -54,3 +37,5 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
+
+export default App
