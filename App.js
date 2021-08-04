@@ -4,16 +4,20 @@ import MainScreen from './src/components/screens/MainScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import SubScreen from './src/components/screens/SubScreen';
+import BottomTab from './src/components/controller/BottomTab';
 
-const App = () => {
+export default function App() {
 
   const Stack = createStackNavigator();
 
+  console.log(BottomTab)
+
   return (
-    <NavigationContainer >
+    <NavigationContainer>
       <Stack.Navigator >
-        <Stack.Screen name="My first Page" component={MainScreen} />
+        <Stack.Screen name="MainScreen" component={MainScreen} options={{ title: 'My first page' }} />
         <Stack.Screen name="SubScreen" component={SubScreen} />
+        <Stack.Screen name="Third" component={BottomTab} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -38,4 +42,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App

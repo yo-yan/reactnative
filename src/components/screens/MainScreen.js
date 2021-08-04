@@ -2,8 +2,9 @@ import React from 'react'
 import { View, Text, Button } from 'react-native';
 
 const MainScreen = ({ navigation }) => {
+
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Text>MainScreen</Text>
             <Button
                 title='Go to SubScreen'
@@ -16,6 +17,11 @@ const MainScreen = ({ navigation }) => {
                                 name: 'hashimoto'
                             }
                         }
+                    )} />
+            <Button
+                title='Go to Third'
+                onPress={() =>
+                    navigation.navigate('Third',
                     )} />
         </View>
     )
